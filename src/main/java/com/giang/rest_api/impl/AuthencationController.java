@@ -17,4 +17,9 @@ public class AuthencationController implements AuthencationApi {
     public ResponseEntity<UserDTO> checkLogin(String username, String password) {
         return ResponseEntity.ok(userService.findByUsernameAndPassword(username, password));
     }
+
+    @Override
+    public ResponseEntity<Boolean> logout(Integer id) {
+        return ResponseEntity.ok(true);
+    }
 }

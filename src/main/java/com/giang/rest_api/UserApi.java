@@ -6,19 +6,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Component
 @RequestMapping("/users")
 public interface UserApi {
 
-    @ApiOperation(tags = {"USER"}, response = UserDTO.class, value = "Get list all user")
-    @GetMapping("")
-    ResponseEntity<List<UserDTO>> getAllUser();
+    @ApiOperation(tags = {"USER"}, response = UserDTO.class, value = "Create new user")
+    @PostMapping("")
+    ResponseEntity<UserDTO> createNewUser(@RequestBody UserDTO newUser);
 
-
-    @ApiOperation(tags = "USER", response = Boolean.class, value = "Block/Unblock a user")
+    @ApiOperation(tags = {"USER"}, response = UserDTO.class, value = "Update information of an user")
     @PutMapping("/{id}")
-    ResponseEntity<Boolean> updateStatusUser(@PathVariable("id") Integer id, Boolean status);
+    ResponseEntity<UserDTO> updateInformation(@PathVariable("id") Integer id,
+                                              @RequestParam String key,
+                                              @RequestParam Object value);
 
 }

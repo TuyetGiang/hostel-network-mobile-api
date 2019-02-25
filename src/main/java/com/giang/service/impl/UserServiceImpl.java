@@ -52,7 +52,6 @@ public class UserServiceImpl implements UserService {
     private UserDTO mapToDto(User entity) {
         ModelMapper modelMapper = new ModelMapper();
         UserDTO userDTO = modelMapper.map(entity, UserDTO.class);
-        userDTO.setRoleName(entity.getRoleEntity().getRoleName());
         return userDTO;
     }
 }
