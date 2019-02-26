@@ -1,35 +1,57 @@
-package com.giang.service.dto;
+package com.giang.repository.entity;
 
-import java.io.Serializable;
+import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
-public class PostDTO implements Serializable {
-
+@Entity
+@Table(name = "post")
+public class PostCustom {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "type_id")
     private Integer typeId;
 
+    @Column(name = "user_id")
     private Integer userId;
 
+    @Column(name = "title")
     private String title;
 
+    @Column(name = "content")
     private String content;
 
+    @Column(name = "location")
     private String location;
 
+    @Column(name = "area")
     private Integer area;
 
+    @Column(name = "price")
     private Double price;
 
+    @Column(name = "deposit")
     private Double deposit;
 
+    @Column(name = "post_date")
     private LocalDate postDate;
 
+    @Column(name = "due_date")
     private LocalDate dueDate;
 
+    @Column(name = "status")
     private Boolean status;
 
+    @Column(name = "is_push")
     private Boolean isPush;
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    private List<BenefitInPost> listBenefit;
 
     public Integer getId() {
         return id;
@@ -135,4 +157,11 @@ public class PostDTO implements Serializable {
         isPush = push;
     }
 
+    public List<BenefitInPost> getListBenefit() {
+        return listBenefit;
+    }
+
+    public void setListBenefit(List<BenefitInPost> listBenefit) {
+        this.listBenefit = listBenefit;
+    }
 }
