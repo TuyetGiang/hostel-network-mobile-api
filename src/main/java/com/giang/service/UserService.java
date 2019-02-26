@@ -2,13 +2,14 @@ package com.giang.service;
 
 import com.giang.service.dto.UserDTO;
 
-import java.util.List;
-
 public interface UserService {
 
     UserDTO findByUsernameAndPassword(String username, String password);
 
-    List<UserDTO> findAllUser();
+    UserDTO getUserById(Integer id);
 
-    Boolean updateStatusUser(Integer id, Boolean value);
+    UserDTO updateInformation(UserDTO updateDTO);
+
+    UserDTO createNewUser(UserDTO newUser);
+
 }

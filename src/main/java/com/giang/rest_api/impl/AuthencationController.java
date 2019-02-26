@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
 public class AuthencationController implements AuthencationApi {
 
@@ -15,6 +17,7 @@ public class AuthencationController implements AuthencationApi {
 
     @Override
     public ResponseEntity<UserDTO> checkLogin(String username, String password) {
-        return ResponseEntity.ok(userService.findByUsernameAndPassword(username, password));
+        UserDTO userDTO = userService.findByUsernameAndPassword(username, password);
+        return ResponseEntity.ok(userDTO);
     }
 }
