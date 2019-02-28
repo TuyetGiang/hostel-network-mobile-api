@@ -67,11 +67,11 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostDTO> fillterPost(List<Integer> benefitIds, Integer typeId, String location) {
 
-        if (Objects.isNull(benefitIds)){
-            benefitIds = benefitRepository.findAllIds();
-        }
         List<Integer> list = postCustomRepository.filter(benefitIds, typeId, location);
 
+        if(list.size() < 1){
+            throw new EntityNotFoundException("Can't not find post follow this conditions");
+        }
         List<Post> result = postRepository.findByIdIn(list);
         return result.stream().map(this::mapToDto).collect(Collectors.toList());
 

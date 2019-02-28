@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d6af76c-b6e0-46e2-98d4-c16eb4a6cb9e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/BenefitRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/PictureRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/TypeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Picture.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/giang/service/dto/PictureDTO.java" afterDir="false" />
+    <list default="true" id="8d6af76c-b6e0-46e2-98d4-c16eb4a6cb9e" name="Default Changelist" comment="[GiangPTT] modify repository get Post by push and dueDate">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/javaCompile/classAnalysis.bin" afterDir="false" />
@@ -16,11 +12,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/8b15a062-851d-4762-99db-e50fb8025ed9.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/4/048e78379202da8b2a2e8607a1bd7e2825d96de9" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/291a2a638a892420ee6182ae40027a567ef928f9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/320c928cd93fb726bce70509f76db47bb3b37ee5" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/320c928cd93fb726bce70509f76db47bb3b37ee5" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/4/54ad0295dde210700b1289b0b0301b446a0d47e3" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/b/5b02f1cd620d6abaacd5c33a9ec4d64030e3c523" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/e/7e859fdab8a8b1ac46320fbc837f99c37b836c19" beforeDir="false" />
@@ -60,10 +55,6 @@
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/giang/service/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/giang/service/dto/UserDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/giang/service/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/giang/service/impl/UserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giang/repository/PostCustomRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/PostCustomRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/giang/service/dto/PostDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giang/service/dto/PostDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -143,11 +134,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+            <state relative-caret-position="204">
+              <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -164,8 +155,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/PostCustomRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
+            <state relative-caret-position="119">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -173,7 +164,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.7.9/48612687e0f772c4c26ae70e0dff9b1433faf484/HikariCP-2.7.9-sources.jar!/com/zaxxer/hikari/pool/ProxyPreparedStatement.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
+            <state relative-caret-position="544">
               <caret line="51" selection-start-line="51" selection-end-line="51" />
             </state>
           </provider>
@@ -182,7 +173,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/entity/PostCustom.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="782">
               <caret line="48" column="26" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="26" />
             </state>
           </provider>
@@ -191,7 +182,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/service/dto/PostDTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1291">
+            <state relative-caret-position="1530">
               <caret line="146" column="41" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
               <folding>
                 <element signature="e#2509#2510#0" expanded="true" />
@@ -207,11 +198,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
+            <state relative-caret-position="246">
+              <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
@@ -219,7 +210,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/BenefitRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="102">
               <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -231,7 +222,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Post.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
+            <state relative-caret-position="799">
               <caret line="49" column="26" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="26" />
             </state>
           </provider>
@@ -240,7 +231,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/rest_api/impl/PostController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-272">
+            <state relative-caret-position="85">
               <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
               <folding>
                 <element signature="e#701#702#0" expanded="true" />
@@ -324,10 +315,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/giang/config/LogginAcpect.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Post.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/c2d3bf9f-b1d6-4c88-9829-0eadd6f65338/console.sql" />
-        <option value="$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/giang/repository/BenefitRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/giang/repository/PostCustomRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -343,6 +334,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -468,14 +460,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551328377806" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551337252043" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../LamTT/Sem7/SWD391/RedisWeb" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -562,12 +554,23 @@
       <workItem from="1551205425982" duration="5887000" />
       <workItem from="1551246003047" duration="599000" />
       <workItem from="1551250664739" duration="6164000" />
-      <workItem from="1551319896668" duration="6148000" />
+      <workItem from="1551319896668" duration="6914000" />
+      <workItem from="1551332525321" duration="2070000" />
+      <workItem from="1551337349510" duration="817000" />
+      <workItem from="1551383402209" duration="482000" />
     </task>
+    <task id="LOCAL-00001" summary="[GiangPTT] modify repository get Post by push and dueDate">
+      <created>1551328765860</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1551328765861</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63481000" />
+    <option name="totallyTimeSpent" value="67616000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -580,8 +583,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2549168" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.115733735" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -591,8 +595,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20785597" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.42389524" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.41080198" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37806875" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.5777414" />
@@ -660,6 +664,10 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[GiangPTT] modify repository get Post by push and dueDate" />
+    <option name="LAST_COMMIT_MESSAGE" value="[GiangPTT] modify repository get Post by push and dueDate" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -671,7 +679,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java</url>
-          <line>72</line>
+          <line>69</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -962,9 +970,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c2d3bf9f-b1d6-4c88-9829-0eadd6f65338/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/PostCustomRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.7.9/48612687e0f772c4c26ae70e0dff9b1433faf484/HikariCP-2.7.9-sources.jar!/com/zaxxer/hikari/pool/ProxyPreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/entity/PostCustom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="782">
+          <caret line="48" column="26" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/service/dto/PostDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1291">
+        <state relative-caret-position="1530">
           <caret line="146" column="41" selection-start-line="146" selection-start-column="41" selection-end-line="146" selection-end-column="41" />
           <folding>
             <element signature="e#2509#2510#0" expanded="true" />
@@ -979,9 +1022,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/BenefitRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Post.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="49" column="26" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/rest_api/impl/PostController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
+        <state relative-caret-position="85">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
           <folding>
             <element signature="e#701#702#0" expanded="true" />
@@ -990,62 +1050,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/entity/Post.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="49" column="26" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c2d3bf9f-b1d6-4c88-9829-0eadd6f65338/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/entity/PostCustom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="48" column="26" selection-start-line="48" selection-start-column="20" selection-end-line="48" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zaxxer/HikariCP/2.7.9/48612687e0f772c4c26ae70e0dff9b1433faf484/HikariCP-2.7.9-sources.jar!/com/zaxxer/hikari/pool/ProxyPreparedStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="51" selection-start-line="51" selection-end-line="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/BenefitRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/PostCustomRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="12" column="34" selection-start-line="12" selection-start-column="34" selection-end-line="12" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/service/impl/PostServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="74" column="48" selection-start-line="74" selection-start-column="48" selection-end-line="74" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/giang/repository/PostRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
+        <state relative-caret-position="246">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
         </state>
       </provider>
     </entry>
