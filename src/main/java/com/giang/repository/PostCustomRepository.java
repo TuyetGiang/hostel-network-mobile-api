@@ -9,8 +9,14 @@ import java.util.List;
 
 @Repository
 public interface PostCustomRepository extends JpaRepository<PostCustom, Long> {
-    @Query("SELECT DISTINCT p.id FROM PostCustom p LEFT JOIN p.listBenefit b ON p.id = b.postId WHERE b.benefitId in ?1 AND p.typeId = ?2 AND p.location LIKE ?3")
+    @Query("SELECT DISTINCT p.id FROM PostCustom p LEFT JOIN p.listBenefit b ON p.id = b.postId " +
+            "WHERE b.benefitId in ?1 AND p.typeId = ?2 AND p.location LIKE ?3")
     List<Integer> filter(List<Integer> benefitIds, Integer typeId, String location);
+
+    @Query("SELECT DISTINCT p.id FROM PostCustom p LEFT JOIN p.listBenefit b ON p.id = b.postId " +
+            "WHERE b.benefitId in ?1 AND p.typeId = ?2 AND p.location LIKE ?3 " +
+            "AND p.price>= ?4 AND p.price<= ?5")
+    List<Integer> filter(Integer[] benefitIds, Integer typeId, String location, Double priceMin, Double priceMax);
 
 
 }

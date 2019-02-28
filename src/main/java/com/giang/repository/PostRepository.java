@@ -14,6 +14,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     @Query("SELECT p FROM Post p WHERE p.typeId = ?1 AND p.location LIKE ?2 ")
     List<Post> findByTypeIdAndLocation(Integer typeId, String location);
 
-    @Query("SELECT p FROM Post p WHERE p.id in ?1")
+    @Query("SELECT p FROM Post p WHERE p.id in ?1 AND p.dueDate >= current_date ORDER BY p.isPush DESC")
     List<Post> findByIdIn(List<Integer> ids);
+
+    @Query("SELECT p FROM Post p WHERE p.dueDate >= current_date ORDER BY p.isPush DESC")
+    List<Post> findALLByPush();
 }

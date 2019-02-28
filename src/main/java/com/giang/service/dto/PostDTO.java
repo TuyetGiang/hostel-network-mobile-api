@@ -2,6 +2,7 @@ package com.giang.service.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 public class PostDTO implements Serializable {
 
@@ -30,6 +31,10 @@ public class PostDTO implements Serializable {
     private Boolean status;
 
     private Boolean isPush;
+
+    private List<String> listImgLink;
+
+    private List<Integer> listBenefitId;
 
     public Integer getId() {
         return id;
@@ -135,4 +140,19 @@ public class PostDTO implements Serializable {
         isPush = push;
     }
 
+    public List<String> getListImgLink() {
+        return listImgLink;
+    }
+
+    public void setListImgLink(List<String> listImgLink) {
+        this.listImgLink = listImgLink;
+    }
+
+    public List<Integer> getListBenefitId() {
+        return listBenefitId;
+    }
+
+    public void setListBenefitId(List<Integer> listBenefitId) {
+        this.listBenefitId = listBenefitId;
+    }
 }

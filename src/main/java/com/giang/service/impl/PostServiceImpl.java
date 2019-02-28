@@ -1,9 +1,9 @@
 package com.giang.service.impl;
 
+import com.giang.repository.BenefitRepository;
 import com.giang.repository.PostCustomRepository;
 import com.giang.repository.PostRepository;
 import com.giang.repository.entity.Post;
-import com.giang.repository.entity.PostCustom;
 import com.giang.service.PostService;
 import com.giang.service.dto.PostDTO;
 import org.modelmapper.ModelMapper;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,14 +24,18 @@ public class PostServiceImpl implements PostService {
 
     private final PostCustomRepository postCustomRepository;
 
-    public PostServiceImpl(PostRepository postRepository, PostCustomRepository postCustomRepository) {
+    private final BenefitRepository benefitRepository;
+
+
+    public PostServiceImpl(PostRepository postRepository, PostCustomRepository postCustomRepository, BenefitRepository benefitRepository) {
         this.postRepository = postRepository;
         this.postCustomRepository = postCustomRepository;
+        this.benefitRepository = benefitRepository;
     }
 
     @Override
     public List<PostDTO> getAll() {
-        return postRepository.findAll().stream().map(this::mapToDto).collect(Collectors.toList());
+        return postRepository.findALLByPush().stream().map(this::mapToDto).collect(Collectors.toList());
     }
 
     @Override
@@ -62,6 +67,9 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostDTO> fillterPost(List<Integer> benefitIds, Integer typeId, String location) {
 
+        if (Objects.isNull(benefitIds)){
+            benefitIds = benefitRepository.findAllIds();
+        }
         List<Integer> list = postCustomRepository.filter(benefitIds, typeId, location);
 
         List<Post> result = postRepository.findByIdIn(list);
