@@ -1,16 +1,13 @@
 package com.giang.service.dto;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 public class WishListDTO implements Serializable {
     private Integer id;
 
     private Integer userId;
 
-    private Integer apartmentId;
-
-    private LocalDateTime addDate;
+    private Integer postId;
 
     public Integer getId() {
         return id;
@@ -28,19 +25,11 @@ public class WishListDTO implements Serializable {
         this.userId = userId;
     }
 
-    public Integer getApartmentId() {
-        return apartmentId;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setApartmentId(Integer apartmentId) {
-        this.apartmentId = apartmentId;
-    }
-
-    public LocalDateTime getAddDate() {
-        return addDate;
-    }
-
-    public void setAddDate(LocalDateTime addDate) {
-        this.addDate = addDate;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 }

@@ -13,5 +13,11 @@ public interface PostService {
 
     PostDTO updatePost(PostDTO dto);
 
-    List<PostDTO> fillterPost(List<Integer> benefitIds, Integer typeId, String location);
+    List<PostDTO> fillterPost(List<Integer> benefitIds, Integer typeId, String location, Double minPrice, Double maxPrice);
+
+    PostDTO pushPost(Integer id);
+
+    PostDTO repostPost(Integer id, Integer numberDay, Boolean isPush);
+
+    Boolean deletePost(Integer id);
 }

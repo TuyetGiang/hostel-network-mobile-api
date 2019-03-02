@@ -33,7 +33,22 @@ public interface PostApi {
     @GetMapping("/conditions")
     ResponseEntity<List<PostDTO>> filterPost(@RequestParam(value = "benefits", required = false) List<Integer> benefitIds,
                                              @RequestParam(value = "type", required = false) Integer typeId,
-                                             @RequestParam(value = "location", required = false) String location);
+                                             @RequestParam(value = "location", required = false) String location,
+                                             @RequestParam(value = "minPrice", required = false) Double minPrice,
+                                             @RequestParam(value = "maxPrice", required = false) Double maxPrice);
 
 
+    @ApiOperation(tags = "POST", value = "Push a post", response = PostDTO.class)
+    @PutMapping("/{id}/push")
+    ResponseEntity<PostDTO> pushPost(@PathVariable("id") Integer id);
+
+    @ApiOperation(tags = "POST", value = "Repost a post", response = PostDTO.class)
+    @PutMapping("/{id}/repost")
+    ResponseEntity<PostDTO> repostPost(@PathVariable("id") Integer id,
+                                       @RequestParam Integer numberDay,
+                                       @RequestParam Boolean isPush);
+
+    @ApiOperation(tags = "POST", value = "Delete a post", response = Boolean.class)
+    @DeleteMapping("/{id}")
+    ResponseEntity<Boolean> deletePost(@PathVariable("id")Integer id);
 }

@@ -9,6 +9,9 @@ import java.util.List;
 
 @Repository
 public interface BenefitRepository extends JpaRepository<Benefit, Long> {
+    @Query("SELECT b FROM Benefit b WHERE b.id in ?1")
+    List<Benefit> findAllByIdIn(List<Integer> ids);
+
     @Query("SELECT b.id FROM Benefit b")
-    List<Integer> findAllIds();
+    List<Integer> findAllId();
 }

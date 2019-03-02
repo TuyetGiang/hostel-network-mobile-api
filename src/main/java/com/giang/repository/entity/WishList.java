@@ -1,7 +1,6 @@
 package com.giang.repository.entity;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "wish_list")
@@ -14,11 +13,8 @@ public class WishList {
     @Column(name = "user_id")
     private Integer userId;
 
-    @Column(name = "apartment_id")
-    private Integer apartmentId;
-
-    @Column(name = "add_date")
-    private LocalDateTime addDate;
+    @Column(name = "post_id")
+    private Integer postId;
 
     public Integer getId() {
         return id;
@@ -36,19 +32,11 @@ public class WishList {
         this.userId = userId;
     }
 
-    public Integer getApartmentId() {
-        return apartmentId;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setApartmentId(Integer apartmentId) {
-        this.apartmentId = apartmentId;
-    }
-
-    public LocalDateTime getAddDate() {
-        return addDate;
-    }
-
-    public void setAddDate(LocalDateTime addDate) {
-        this.addDate = addDate;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 }
