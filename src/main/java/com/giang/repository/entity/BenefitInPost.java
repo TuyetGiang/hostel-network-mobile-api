@@ -3,18 +3,18 @@ package com.giang.repository.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "wish_list")
-public class WishList {
+@Table(name = "benefit_in_post")
+public class BenefitInPost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
-
     @Column(name = "post_id")
     private Integer postId;
+
+    @Column(name = "benefit_id")
+    private Integer benefitId;
 
     public Integer getId() {
         return id;
@@ -24,19 +24,19 @@ public class WishList {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public Integer getPostId() {
         return postId;
     }
 
     public void setPostId(Integer postId) {
         this.postId = postId;
+    }
+
+    public Integer getBenefitId() {
+        return benefitId;
+    }
+
+    public void setBenefitId(Integer benefitId) {
+        this.benefitId = benefitId;
     }
 }
