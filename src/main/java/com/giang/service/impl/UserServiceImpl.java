@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO createNewUser(UserDTO newUser) {
         User user = userRepository.findByUsername(newUser.getUsername());
         if (Objects.nonNull(user)){
-            throw new EntityExistsException("This object is existed! ");
+            throw new EntityExistsException("This username is existed! ");
         }
         user = userRepository.saveAndFlush(mapToEntity(newUser));
         return mapToDto(user);

@@ -11,28 +11,18 @@ import java.util.List;
 @Component
 @RequestMapping("/benefits")
 public interface BenefitApi {
-    @ApiOperation(tags = "BENEFIT", value = "Create new benefit", response = BenefitDTO.class)
-    @PostMapping("")
-    ResponseEntity<BenefitDTO> insert(@RequestBody BenefitDTO dto);
 
-    @ApiOperation(tags = "BENEFIT", value = "Delete a benefit", response = BenefitDTO.class)
+    @ApiOperation(tags = "BENEFIT", value = "Get all benefit in a post", response = BenefitDTO.class)
+    @GetMapping("/posts")
+    ResponseEntity<List<BenefitDTO>> getAllBenefitInPost(@RequestParam Integer postId);
+
+    @ApiOperation(tags = "BENEFIT", value = "Insert a benefit into apost", response = Boolean.class)
+    @PostMapping("/posts")
+    ResponseEntity<Boolean> insertBenefitIntoPost(@RequestParam Integer postId,
+                                                  @RequestParam Integer benefitId);
+
+    @ApiOperation(tags = "BENEFIT", value = "Delete a benefit out of post", response = Boolean.class)
     @DeleteMapping("/{id}")
-    ResponseEntity<Boolean> delete(@PathVariable("id") Integer id);
-
-
-    @ApiOperation(tags = "BENEFIT", value = "Update a benefit", response = BenefitDTO.class)
-    @PutMapping("/{id}")
-    ResponseEntity<BenefitDTO> update(@PathVariable("id") Integer id,
-                                      @RequestParam("key") String key,
-                                      @RequestParam("value") Object value);
-
-    @ApiOperation(tags = "BENEFIT", value = "Get all benefit", response = BenefitDTO.class)
-    @GetMapping("")
-    ResponseEntity<List<BenefitDTO>> getAll();
-
-    @ApiOperation(tags = "BENEFIT", value = "Get a benefit", response = BenefitDTO.class)
-    @GetMapping("/{id}")
-    ResponseEntity<BenefitDTO> getBenefit(@PathVariable("id") Integer id);
-
+    ResponseEntity<Boolean> deleteBenefit(@PathVariable("id") Integer id);
 
 }

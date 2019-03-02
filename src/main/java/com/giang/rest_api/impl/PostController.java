@@ -24,7 +24,7 @@ public class PostController implements PostApi {
     }
 
     @Override
-    public ResponseEntity<PostDTO> getPost(@PathVariable("id")Integer id) {
+    public ResponseEntity<PostDTO> getPost(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(postService.getPost(id));
     }
 
@@ -41,7 +41,26 @@ public class PostController implements PostApi {
     @Override
     public ResponseEntity<List<PostDTO>> filterPost(@RequestParam(value = "benefits", required = false) List<Integer> benefitIds,
                                                     @RequestParam(value = "type", required = false) Integer typeId,
-                                                    @RequestParam(value = "location", required = false) String location) {
-        return ResponseEntity.ok(postService.fillterPost(benefitIds, typeId, location) );
+                                                    @RequestParam(value = "location", required = false) String location,
+                                                    @RequestParam(value = "minPrice", required = false) Double minPrice,
+                                                    @RequestParam(value = "maxPrice", required = false) Double maxPrice) {
+        return ResponseEntity.ok(postService.fillterPost(benefitIds, typeId, location, minPrice, maxPrice));
+    }
+
+    @Override
+    public ResponseEntity<PostDTO> pushPost(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(postService.pushPost(id));
+    }
+
+    @Override
+    public ResponseEntity<PostDTO> repostPost(@PathVariable("id") Integer id,
+                                              @RequestParam Integer numberDay,
+                                              @RequestParam Boolean isPush) {
+        return ResponseEntity.ok(postService.repostPost(id, numberDay, isPush));
+    }
+
+    @Override
+    public ResponseEntity<Boolean> deletePost(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(postService.deletePost(id));
     }
 }

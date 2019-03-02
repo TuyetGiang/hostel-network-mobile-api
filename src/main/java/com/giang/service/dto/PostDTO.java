@@ -2,6 +2,7 @@ package com.giang.service.dto;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 public class PostDTO implements Serializable {
 
