@@ -18,6 +18,11 @@ public class BenefitController implements BenefitApi {
     BenefitService benefitService;
 
     @Override
+    public ResponseEntity<List<BenefitDTO>> getAllBenefit() {
+        return ResponseEntity.ok(benefitService.getAll());
+    }
+
+    @Override
     public ResponseEntity<List<BenefitDTO>> getAllBenefitInPost(@RequestParam Integer postId) {
         return ResponseEntity.ok(benefitService.listBenefitByPost(postId));
     }
