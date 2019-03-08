@@ -12,6 +12,10 @@ import java.util.List;
 @RequestMapping("/benefits")
 public interface BenefitApi {
 
+    @ApiOperation(tags = "BENEFIT", value = "Get all benefit ", response = BenefitDTO.class)
+    @GetMapping("")
+    ResponseEntity<List<BenefitDTO>> getAllBenefit();
+
     @ApiOperation(tags = "BENEFIT", value = "Get all benefit in a post", response = BenefitDTO.class)
     @GetMapping("/posts")
     ResponseEntity<List<BenefitDTO>> getAllBenefitInPost(@RequestParam Integer postId);
