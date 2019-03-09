@@ -18,8 +18,8 @@ public class Appointment {
     @Column(name = "host_id")
     private Integer hostId;
 
-    @Column(name = "location")
-    private String location;
+    @Column(name = "post_id")
+    private Integer postId;
 
     @Column(name = "time")
     private LocalDateTime time;
@@ -29,6 +29,9 @@ public class Appointment {
 
     @Column(name = "status")
     private Integer status;
+
+    @Column(name = "note")
+    private String note;
 
     public Integer getId() {
         return id;
@@ -54,12 +57,12 @@ public class Appointment {
         this.hostId = hostId;
     }
 
-    public String getLocation() {
-        return location;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
     public LocalDateTime getTime() {
@@ -84,5 +87,13 @@ public class Appointment {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

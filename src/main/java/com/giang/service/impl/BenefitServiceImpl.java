@@ -37,7 +37,7 @@ public class BenefitServiceImpl implements BenefitService {
     @Override
     public List<BenefitDTO> listBenefitByPost(Integer postId) {
         List<Integer> ids = benefitInPostRepository.findAllBenefitIdByPostId(postId);
-        if (Objects.nonNull(ids) && ids.size() > 1) {
+        if (Objects.nonNull(ids) && ids.size() > 0) {
             return benefitRepository.findAllByIdIn(ids).stream().map(this::mapToDTO).collect(Collectors.toList());
         }
         return null;

@@ -12,9 +12,9 @@ import java.util.List;
 @RequestMapping("/posts")
 public interface PostApi {
 
-    @ApiOperation(tags = "POST", value = "Get all post", response = PostDTO.class)
-    @GetMapping("")
-    ResponseEntity<List<PostDTO>> getAll();
+//    @ApiOperation(tags = "POST", value = "Get all post", response = PostDTO.class)
+//    @GetMapping("")
+//    ResponseEntity<List<PostDTO>> getAll();
 
     @ApiOperation(tags = "POST", value = "Get a post", response = PostDTO.class)
     @GetMapping("/{id}")
@@ -25,28 +25,31 @@ public interface PostApi {
     ResponseEntity<PostDTO> createNewPost(@RequestBody PostDTO newPost);
 
     @ApiOperation(tags = {"POST"}, value = "Modify  a post", response = PostDTO.class)
-    @PutMapping("")
-    ResponseEntity<PostDTO> updatePost(@RequestBody PostDTO dto);
+    @PutMapping("/{id}")
+    ResponseEntity<PostDTO> updatePost(@PathVariable("id")Integer id,
+                                       @RequestParam(value = "pushed", required = false)Boolean pushed,
+                                       @RequestParam(value = "reposted", required = false)Boolean reposted,
+                                       @RequestBody(required = false) PostDTO dto);
 
 
     @ApiOperation(tags = "POST", value = "Filter post by  benefit, type and location", response = PostDTO.class)
-    @GetMapping("/conditions")
+    @GetMapping("")
     ResponseEntity<List<PostDTO>> filterPost(@RequestParam(value = "benefits", required = false) List<Integer> benefitIds,
                                              @RequestParam(value = "type", required = false) Integer typeId,
                                              @RequestParam(value = "location", required = false) String location,
                                              @RequestParam(value = "minPrice", required = false) Double minPrice,
                                              @RequestParam(value = "maxPrice", required = false) Double maxPrice);
 
-
-    @ApiOperation(tags = "POST", value = "Push a post", response = PostDTO.class)
-    @PutMapping("/{id}/push")
-    ResponseEntity<PostDTO> pushPost(@PathVariable("id") Integer id);
-
-    @ApiOperation(tags = "POST", value = "Repost a post", response = PostDTO.class)
-    @PutMapping("/{id}/repost")
-    ResponseEntity<PostDTO> repostPost(@PathVariable("id") Integer id,
-                                       @RequestParam Integer numberDay,
-                                       @RequestParam Boolean isPush);
+//
+//    @ApiOperation(tags = "POST", value = "Push a post", response = PostDTO.class)
+//    @PutMapping("/{id}/push")
+//    ResponseEntity<PostDTO> pushPost(@PathVariable("id") Integer id);
+//
+//    @ApiOperation(tags = "POST", value = "Repost a post", response = PostDTO.class)
+//    @PutMapping("/{id}/repost")
+//    ResponseEntity<PostDTO> repostPost(@PathVariable("id") Integer id,
+//                                       @RequestParam Integer numberDay,
+//                                       @RequestParam Boolean isPush);
 
     @ApiOperation(tags = "POST", value = "Delete a post", response = Boolean.class)
     @DeleteMapping("/{id}")

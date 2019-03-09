@@ -11,7 +11,7 @@ public class AppointmentDTO implements Serializable {
 
     private Integer hostId;
 
-    private String location;
+    private Integer postId;
 
     private LocalDateTime time;
 
@@ -19,6 +19,7 @@ public class AppointmentDTO implements Serializable {
 
     private Integer status;
 
+    private String note;
 
     public Integer getId() {
         return id;
@@ -44,12 +45,20 @@ public class AppointmentDTO implements Serializable {
         this.hostId = hostId;
     }
 
-    public String getLocation() {
-        return location;
+    public Integer getPostId() {
+        return postId;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public LocalDateTime getTime() {

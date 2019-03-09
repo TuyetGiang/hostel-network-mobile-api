@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class AppointmentController implements AppointmentApi {
@@ -19,14 +20,18 @@ public class AppointmentController implements AppointmentApi {
     AppointmentService appointmentService;
 
     @Override
-    public ResponseEntity<List<AppointmentDTO>> getAppointmentByRenter(@RequestParam("userId") Integer userId) {
-        return ResponseEntity.ok(appointmentService.getAppointmentByRenter(userId));
+    public ResponseEntity<List<AppointmentDTO>> getAppointmentByUser(@RequestParam("userId") Integer userId,
+                                                                     @RequestParam(value = "created", required = false) Boolean created) {
+        return Objects.nonNull(created) ?
+                created ? ResponseEntity.ok(appointmentService.getAppointmentByRenter(userId))
+                        : ResponseEntity.ok(appointmentService.getAppointmentByHost(userId))
+                : null;
+
     }
 
-    @Override
-    public ResponseEntity<List<AppointmentDTO>> getAppointmentByHost(@RequestParam("userId") Integer userId) {
-        return ResponseEntity.ok(appointmentService.getAppointmentByHost(userId));
-    }
+//    @Override
+//    public ResponseEntity<List<AppointmentDTO>> getAppointmentByHost(@RequestParam("userId") Integer userId) {
+//    }
 
     @Override
     public ResponseEntity<AppointmentDTO> getAppointmentDetail(@PathVariable("id") Integer id) {

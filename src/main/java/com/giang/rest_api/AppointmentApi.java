@@ -13,13 +13,14 @@ import java.util.List;
 @RequestMapping("/appointments")
 public interface AppointmentApi {
 
-    @ApiOperation(tags = {"APPOINTMENT"}, value = "Get all appointments you created")
-    @GetMapping("/renters")
-    ResponseEntity<List<AppointmentDTO>> getAppointmentByRenter(@RequestParam("userId") Integer userId);
+    @ApiOperation(tags = {"APPOINTMENT"}, value = "Get all appointments of an user")
+    @GetMapping("")
+    ResponseEntity<List<AppointmentDTO>> getAppointmentByUser(@RequestParam("userId") Integer userId,
+                                                              @RequestParam(value = "created", required = false) Boolean created);
 
-    @ApiOperation(tags = {"APPOINTMENT"}, value = "Get all your appointments")
-    @GetMapping("/hosts")
-    ResponseEntity<List<AppointmentDTO>> getAppointmentByHost(@RequestParam("userId") Integer userId);
+//    @ApiOperation(tags = {"APPOINTMENT"}, value = "Get all your appointments")
+//    @GetMapping("/hosts")
+//    ResponseEntity<List<AppointmentDTO>> getAppointmentByHost(@RequestParam("userId") Integer userId);
 
     @ApiOperation(tags = {"APPOINTMENT"}, value = "Get an appointment detail")
     @GetMapping("/{id}")

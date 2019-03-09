@@ -124,14 +124,14 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDTO repostPost(Integer id, Integer numberDay, Boolean isPush) {
+    public PostDTO repostPost(Integer id, LocalDate dueDate, Boolean isPush) {
         Post post = postRepository.findById(id);
         Optional.ofNullable(post).orElseThrow(EntityNotFoundException::new);
 
         post.setPostDate(LocalDate.now());
-        post.setDueDate(LocalDate.now().plusDays(numberDay));
+        post.setDueDate(dueDate);
 
-        if (isPush) {
+        if (Objects.nonNull(isPush) && isPush) {
             updateAmountUser(post.getUserId(), pushMoney(post) + postMoney(post));
             post.setPush(true);
         } else {
