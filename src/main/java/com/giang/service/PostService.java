@@ -2,6 +2,7 @@ package com.giang.service;
 
 import com.giang.service.dto.PostDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface PostService {
@@ -17,7 +18,7 @@ public interface PostService {
 
     PostDTO pushPost(Integer id);
 
-    PostDTO repostPost(Integer id, Integer numberDay, Boolean isPush);
+    PostDTO repostPost(Integer id, LocalDate dueDate, Boolean isPush);
 
     Boolean deletePost(Integer id);
 }

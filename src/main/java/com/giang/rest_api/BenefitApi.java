@@ -12,16 +12,16 @@ import java.util.List;
 @RequestMapping("/benefits")
 public interface BenefitApi {
 
-    @ApiOperation(tags = "BENEFIT", value = "Get all benefit ", response = BenefitDTO.class)
-    @GetMapping("")
-    ResponseEntity<List<BenefitDTO>> getAllBenefit();
+//    @ApiOperation(tags = "BENEFIT", value = "Get all benefit ", response = BenefitDTO.class)
+//    @GetMapping("")
+//    ResponseEntity<List<BenefitDTO>> getAllBenefit();
 
     @ApiOperation(tags = "BENEFIT", value = "Get all benefit in a post", response = BenefitDTO.class)
-    @GetMapping("/posts")
-    ResponseEntity<List<BenefitDTO>> getAllBenefitInPost(@RequestParam Integer postId);
+    @GetMapping("")
+    ResponseEntity<List<BenefitDTO>> getAllBenefitInPost(@RequestParam(value = "postId", required = false) Integer postId);
 
-    @ApiOperation(tags = "BENEFIT", value = "Insert a benefit into apost", response = Boolean.class)
-    @PostMapping("/posts")
+    @ApiOperation(tags = "BENEFIT", value = "Insert a benefit into a post", response = Boolean.class)
+    @PostMapping("")
     ResponseEntity<Boolean> insertBenefitIntoPost(@RequestParam Integer postId,
                                                   @RequestParam Integer benefitId);
 
