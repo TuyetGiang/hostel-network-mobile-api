@@ -13,11 +13,11 @@ import java.util.List;
 public interface PictureApi {
 
     @ApiOperation(tags = "PICTURES", value = "Get all picture in a post", response = String.class)
-    @GetMapping("/posts")
+    @GetMapping("")
     ResponseEntity<List<String>> getAllPictureInPost(@RequestParam Integer postId);
 
     @ApiOperation(tags = "PICTURES", value = "Insert all picture into a post", response = PictureDTO.class)
-    @PostMapping("/posts")
+    @PostMapping("")
     ResponseEntity<PictureDTO> insertPictureIntoPost(@RequestParam Integer postId,
                                                      @RequestParam String imgLink);
 

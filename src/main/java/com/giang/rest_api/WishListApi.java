@@ -13,7 +13,7 @@ import java.util.List;
 public interface WishListApi {
 
     @ApiOperation(tags = "WISH LIST", value = "Get all save post of an user")
-    @GetMapping("/users")
+    @GetMapping("")
     ResponseEntity<List<WishListDTO>> getAllWishListByUserId(@RequestParam("userId") Integer userId);
 
     @ApiOperation(tags = "WISH LIST", value = "Add a post to wish list of an user")
