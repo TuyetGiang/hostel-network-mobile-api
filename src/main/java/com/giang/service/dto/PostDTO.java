@@ -29,7 +29,7 @@ public class PostDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate postDate;
 
-    @JsonFormat(pattern = "dd/MM/yyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dueDate;
 
     private Boolean status;
