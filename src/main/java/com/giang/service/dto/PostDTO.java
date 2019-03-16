@@ -36,6 +36,17 @@ public class PostDTO implements Serializable {
 
     private Boolean isPush;
 
+    private String imgLinkPoster;
+
+    public String getImgLinkPoster() {
+        return imgLinkPoster;
+    }
+
+    public void setImgLinkPoster(String imgLinkPoster) {
+        this.imgLinkPoster = imgLinkPoster;
+    }
+
+
     public Integer getId() {
         return id;
     }

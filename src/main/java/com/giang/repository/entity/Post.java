@@ -49,6 +49,17 @@ public class Post {
     @Column(name = "is_push")
     private Boolean isPush;
 
+    @Column(name = "img_link_poster")
+    private String imgLinkPoster;
+
+    public String getImgLinkPoster() {
+        return imgLinkPoster;
+    }
+
+    public void setImgLinkPoster(String imgLinkPoster) {
+        this.imgLinkPoster = imgLinkPoster;
+    }
+
     public Integer getId() {
         return id;
     }
