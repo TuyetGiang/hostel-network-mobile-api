@@ -153,7 +153,10 @@ public class PostServiceImpl implements PostService {
 
     private PostDTO mapToDto(Post entity) {
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(entity, PostDTO.class);
+        PostDTO result = modelMapper.map(entity, PostDTO.class);
+
+        result.setTypeStr(typeRepository.findTypeNameById(entity.getTypeId()));
+        return result;
     }
 
     private Post mapToEntity(PostDTO dto) {
