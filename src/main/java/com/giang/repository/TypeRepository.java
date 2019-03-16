@@ -12,4 +12,7 @@ public interface TypeRepository extends JpaRepository<Type, Long> {
 
     @Query("SELECT t.id FROM Type t")
     List<Integer> findAllId();
+
+    @Query("SELECT t.typeName FROM Type t WHERE t.id = ?1")
+    String findTypeNameById(Integer id);
 }
