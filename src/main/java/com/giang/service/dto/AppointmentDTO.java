@@ -1,5 +1,7 @@
 package com.giang.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -13,8 +15,10 @@ public class AppointmentDTO implements Serializable {
 
     private Integer postId;
 
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     private LocalDateTime time;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate createDate;
 
     private Integer status;

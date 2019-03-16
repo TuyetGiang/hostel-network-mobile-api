@@ -1,5 +1,7 @@
 package com.giang.service.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -24,8 +26,10 @@ public class PostDTO implements Serializable {
 
     private Double deposit;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate postDate;
 
+    @JsonFormat(pattern = "dd/MM/yyy")
     private LocalDate dueDate;
 
     private Boolean status;
