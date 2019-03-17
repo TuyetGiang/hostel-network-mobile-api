@@ -5,7 +5,7 @@ import com.giang.service.dto.WishListDTO;
 import java.util.List;
 
 public interface WishListService {
-    List<WishListDTO> getAllWishListByUserId(Integer userId);
+    List<Integer> getAllPostIdInWishList(Integer userId);
 
     WishListDTO savePostToWishList(Integer userId, Integer postId);
 
