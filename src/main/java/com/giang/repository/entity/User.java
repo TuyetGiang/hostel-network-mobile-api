@@ -38,6 +38,9 @@ public class User {
     @Column(name = "is_blocked")
     private Boolean isBlocked;
 
+    @Column(name = "img_avatar")
+    private String imgAvatar;
+
     @Column(name = "amount")
     private Double amount;
 
@@ -127,5 +130,13 @@ public class User {
 
     public Double getAmount() {
         return amount;
+    }
+
+    public String getImgAvatar() {
+        return imgAvatar;
+    }
+
+    public void setImgAvatar(String imgAvatar) {
+        this.imgAvatar = imgAvatar;
     }
 }

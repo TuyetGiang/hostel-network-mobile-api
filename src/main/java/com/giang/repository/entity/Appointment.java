@@ -18,8 +18,8 @@ public class Appointment {
     @Column(name = "host_id")
     private Integer hostId;
 
-    @Column(name = "post_id")
-    private Integer postId;
+    @Column(name = "address_appointment")
+    private String addressAppointment;
 
     @Column(name = "time")
     private LocalDateTime time;
@@ -57,12 +57,12 @@ public class Appointment {
         this.hostId = hostId;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public String getAddressAppointment() {
+        return addressAppointment;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setAddressAppointment(String addressAppointment) {
+        this.addressAppointment = addressAppointment;
     }
 
     public LocalDateTime getTime() {

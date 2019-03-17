@@ -13,7 +13,7 @@ public class AppointmentDTO implements Serializable {
 
     private Integer hostId;
 
-    private Integer postId;
+    private String addressAppointment;
 
     @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     private LocalDateTime time;
@@ -49,12 +49,12 @@ public class AppointmentDTO implements Serializable {
         this.hostId = hostId;
     }
 
-    public Integer getPostId() {
-        return postId;
+    public String getAddressAppointment() {
+        return addressAppointment;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setAddressAppointment(String addressAppointment) {
+        this.addressAppointment = addressAppointment;
     }
 
     public String getNote() {

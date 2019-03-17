@@ -30,6 +30,8 @@ public class UserDTO implements Serializable {
 
     private Boolean isAdmin;
 
+    private String imgAvatar;
+
     public Integer getId() {
         return id;
     }
@@ -116,5 +118,13 @@ public class UserDTO implements Serializable {
 
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
+    }
+
+    public String getImgAvatar() {
+        return imgAvatar;
+    }
+
+    public void setImgAvatar(String imgAvatar) {
+        this.imgAvatar = imgAvatar;
     }
 }
