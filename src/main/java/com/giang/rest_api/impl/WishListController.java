@@ -18,8 +18,8 @@ public class WishListController implements WishListApi {
     WishListService wishListService;
 
     @Override
-    public ResponseEntity<List<WishListDTO>> getAllWishListByUserId(@RequestParam("userId") Integer userId) {
-        return ResponseEntity.ok(wishListService.getAllWishListByUserId(userId));
+    public ResponseEntity<List<Integer>> getAllPostIdSavedByUserId(@RequestParam("userId") Integer userId) {
+        return ResponseEntity.ok(wishListService.getAllPostIdInWishList(userId));
     }
 
     @Override

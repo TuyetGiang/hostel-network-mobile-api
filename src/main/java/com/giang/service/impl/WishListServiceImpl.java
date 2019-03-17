@@ -13,7 +13,6 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -26,8 +25,8 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
-    public List<WishListDTO> getAllWishListByUserId(Integer userId) {
-        return wishListRepository.findAllByUserId(userId).stream().map(this::mapToDto).collect(Collectors.toList());
+    public List<Integer> getAllPostIdInWishList(Integer userId) {
+        return wishListRepository.findPostIdByUserId(userId);
     }
 
     @Override
