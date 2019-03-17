@@ -78,4 +78,15 @@ public class PostController implements PostApi {
     public ResponseEntity<Boolean> deletePost(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(postService.deletePost(id));
     }
+
+    @Override
+    public ResponseEntity<List<PostDTO>> getPostByUser(Integer userId, Boolean created, Boolean saved) {
+        if (created != null && created){
+            return ResponseEntity.ok(postService.getCreatedPostByUser(userId));
+        }
+        if (saved != null && saved){
+            return ResponseEntity.ok(postService.getSavedPostByUser(userId));
+        }
+        return ResponseEntity.ok(null);
+    }
 }

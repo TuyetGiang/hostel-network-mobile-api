@@ -54,4 +54,10 @@ public interface PostApi {
     @ApiOperation(tags = "POST", value = "Delete a post", response = Boolean.class)
     @DeleteMapping("/{id}")
     ResponseEntity<Boolean> deletePost(@PathVariable("id")Integer id);
+
+    @ApiOperation(tags = "POST", value = "Get all post created/saved by user", response = PostDTO.class)
+    @GetMapping("/users")
+    ResponseEntity<List<PostDTO>> getPostByUser(@RequestParam Integer userId,
+                                                @RequestParam(value = "created", required = false)Boolean created,
+                                                @RequestParam(value = "saved", required = false)Boolean saved);
 }

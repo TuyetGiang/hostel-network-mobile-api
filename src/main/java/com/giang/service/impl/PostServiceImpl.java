@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,12 +33,15 @@ public class PostServiceImpl implements PostService {
 
     private final TypeRepository typeRepository;
 
-    public PostServiceImpl(PostRepository postRepository, PostCustomRepository postCustomRepository, UserRepository userRepository, BenefitRepository benefitRepository, TypeRepository typeRepository) {
+    private final WishListRepository wishListRepository;
+
+    public PostServiceImpl(PostRepository postRepository, PostCustomRepository postCustomRepository, UserRepository userRepository, BenefitRepository benefitRepository, TypeRepository typeRepository, WishListRepository wishListRepository) {
         this.postRepository = postRepository;
         this.postCustomRepository = postCustomRepository;
         this.userRepository = userRepository;
         this.benefitRepository = benefitRepository;
         this.typeRepository = typeRepository;
+        this.wishListRepository = wishListRepository;
     }
 
     @Override
@@ -149,6 +153,21 @@ public class PostServiceImpl implements PostService {
 
         postRepository.delete(post);
         return true;
+    }
+
+    @Override
+    public List<PostDTO> getCreatedPostByUser(Integer userId) {
+        return postRepository.findAllPostByUserId(userId).stream().map(this::mapToDto).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PostDTO> getSavedPostByUser(Integer userId) {
+        List<Post> result = new ArrayList<>();
+        List<Integer> postIds = wishListRepository.findPostIdByUserId(userId);
+        if (postIds != null && postIds.size() > 0){
+            result = postRepository.findByIdIn(postIds);
+        }
+        return result.stream().map(this::mapToDto).collect(Collectors.toList());
     }
 
     private PostDTO mapToDto(Post entity) {

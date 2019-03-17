@@ -21,4 +21,8 @@ public interface PostService {
     PostDTO repostPost(Integer id, LocalDate dueDate, Boolean isPush);
 
     Boolean deletePost(Integer id);
+
+    List<PostDTO> getCreatedPostByUser(Integer userId);
+
+    List<PostDTO> getSavedPostByUser(Integer userId);
 }
