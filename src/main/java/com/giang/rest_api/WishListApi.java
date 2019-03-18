@@ -21,7 +21,12 @@ public interface WishListApi {
     ResponseEntity<WishListDTO> savePostToWishList(@RequestParam("userId") Integer userId,
                                                    @RequestParam("postId") Integer postId);
 
-    @ApiOperation(tags = "WISH LIST", value = "Delete a post out of a wish list of an user")
+    @ApiOperation(tags = "WISH LIST", value = "Delete a wish list by id")
     @DeleteMapping("/{id}")
-    ResponseEntity<Boolean> deletePostOutOfWishList(@PathVariable("id") Integer id);
+    ResponseEntity<Boolean> deleteAWishList(@PathVariable("id") Integer id);
+
+    @ApiOperation(tags = "WISH LIST", value = "Delete a post out of a wish list of an user")
+    @DeleteMapping("")
+    ResponseEntity<Boolean> deletePostOutOfWishListOfUser(@RequestParam("userId") Integer userId,
+                                                          @RequestParam("postId") Integer postId);
 }

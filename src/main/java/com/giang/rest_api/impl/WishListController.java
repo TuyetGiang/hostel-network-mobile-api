@@ -29,7 +29,12 @@ public class WishListController implements WishListApi {
     }
 
     @Override
-    public ResponseEntity<Boolean> deletePostOutOfWishList(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(wishListService.deletePostOutOfWishList(id));
+    public ResponseEntity<Boolean> deleteAWishList(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(wishListService.deleteWishListById(id));
+    }
+
+    @Override
+    public ResponseEntity<Boolean> deletePostOutOfWishListOfUser(Integer userId, Integer postId) {
+        return ResponseEntity.ok(wishListService.deleteWishLishByUserIdAndPostId(userId,postId));
     }
 }

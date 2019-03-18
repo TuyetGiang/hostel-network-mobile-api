@@ -9,5 +9,7 @@ public interface WishListService {
 
     WishListDTO savePostToWishList(Integer userId, Integer postId);
 
-    Boolean deletePostOutOfWishList(Integer id);
+    Boolean deleteWishListById(Integer id);
+
+    Boolean deleteWishLishByUserIdAndPostId(Integer userId, Integer postId);
 }

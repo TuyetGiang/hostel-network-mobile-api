@@ -45,10 +45,20 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
-    public Boolean deletePostOutOfWishList(Integer id) {
+    public Boolean deleteWishListById(Integer id) {
         WishList wishList = wishListRepository.findById(id);
         Optional.ofNullable(wishList).orElseThrow(EntityNotFoundException::new);
 
+        wishListRepository.delete(wishList);
+        return true;
+    }
+
+    @Override
+    public Boolean deleteWishLishByUserIdAndPostId(Integer userId, Integer postId) {
+        WishList wishList = wishListRepository.findByUserIdAndPostId(userId, postId);
+        if (Objects.isNull(wishList)){
+            throw new  EntityNotFoundException("Not found post in wish list of this user");
+        }
         wishListRepository.delete(wishList);
         return true;
     }
