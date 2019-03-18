@@ -19,4 +19,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     @Query("SELECT p FROM Post p WHERE p.dueDate >= current_date AND p.userId = ?1 ORDER BY p.isPush DESC, p.postDate desc ")
     List<Post> findAllPostByUserId(Integer userId);
+
+    @Query("SELECT p FROM Post p WHERE p.userId = ?1")
+    List<Post> findAllCreatedPost(Integer userId);
 }

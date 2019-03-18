@@ -157,7 +157,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostDTO> getCreatedPostByUser(Integer userId) {
-        return postRepository.findAllPostByUserId(userId).stream().map(this::mapToDto).collect(Collectors.toList());
+        return postRepository.findAllCreatedPost(userId).stream().map(this::mapToDto).collect(Collectors.toList());
     }
 
     @Override
