@@ -1,9 +1,11 @@
 package com.giang.service.impl;
 
 import com.giang.repository.AppointmentRepository;
+import com.giang.repository.UserRepository;
 import com.giang.repository.entity.Appointment;
 import com.giang.service.AppointmentService;
 import com.giang.service.dto.AppointmentDTO;
+import com.giang.service.dto.UserDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +21,21 @@ public class AppointmentServiceimpl implements AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
 
-    public AppointmentServiceimpl(AppointmentRepository appointmentRepository) {
+    private final UserRepository userRepository;
+
+    public AppointmentServiceimpl(AppointmentRepository appointmentRepository, UserRepository userRepository) {
         this.appointmentRepository = appointmentRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
     public List<AppointmentDTO> getAppointmentByRenter(Integer userId) {
-        return appointmentRepository.findAllByRenterId(userId).stream().map(this::mapToDto).collect(Collectors.toList());
+        return appointmentRepository.findAllByRenterId(userId).stream().map((Appointment entity) -> mapToDtoWithUserInfor(entity, entity.getHostId())).collect(Collectors.toList());
     }
 
     @Override
     public List<AppointmentDTO> getAppointmentByHost(Integer userId) {
-        return appointmentRepository.findAllByHostId(userId).stream().map(this::mapToDto).collect(Collectors.toList());
+        return appointmentRepository.findAllByHostId(userId).stream().map((Appointment entity) -> mapToDtoWithUserInfor(entity, entity.getRenterId())).collect(Collectors.toList());
     }
 
     @Override
@@ -73,5 +78,12 @@ public class AppointmentServiceimpl implements AppointmentService {
     private Appointment mapToEntity(AppointmentDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(dto, Appointment.class);
+    }
+
+    private AppointmentDTO mapToDtoWithUserInfor(Appointment entity, Integer userId) {
+        ModelMapper modelMapper = new ModelMapper();
+        AppointmentDTO result =  modelMapper.map(entity, AppointmentDTO.class);
+        result.setUserInfor(modelMapper.map(userRepository.findById(userId), UserDTO.class));
+        return result;
     }
 }

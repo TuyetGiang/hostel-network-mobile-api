@@ -15,6 +15,8 @@ public class AppointmentDTO implements Serializable {
 
     private String addressAppointment;
 
+    private UserDTO userInfor;
+
     @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
     private LocalDateTime time;
 
@@ -87,5 +89,13 @@ public class AppointmentDTO implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public UserDTO getUserInfor() {
+        return userInfor;
+    }
+
+    public void setUserInfor(UserDTO userInfor) {
+        this.userInfor = userInfor;
     }
 }
