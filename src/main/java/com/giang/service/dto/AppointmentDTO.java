@@ -17,7 +17,7 @@ public class AppointmentDTO implements Serializable {
 
     private UserDTO userInfor;
 
-    @JsonFormat(pattern = "dd/MM/yyyy hh:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime time;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
