@@ -13,6 +13,8 @@ public class AppointmentDTO implements Serializable {
 
     private Integer hostId;
 
+    private Integer postId;
+
     private String addressAppointment;
 
     private UserDTO userInfor;
@@ -49,6 +51,14 @@ public class AppointmentDTO implements Serializable {
 
     public void setHostId(Integer hostId) {
         this.hostId = hostId;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
     public String getAddressAppointment() {

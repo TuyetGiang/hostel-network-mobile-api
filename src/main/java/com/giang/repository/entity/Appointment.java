@@ -18,6 +18,9 @@ public class Appointment {
     @Column(name = "host_id")
     private Integer hostId;
 
+    @Column(name = "post_id")
+    private Integer postId;
+
     @Column(name = "address_appointment")
     private String addressAppointment;
 
@@ -95,5 +98,13 @@ public class Appointment {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Integer getPostId() {
+        return postId;
+    }
+
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 }
