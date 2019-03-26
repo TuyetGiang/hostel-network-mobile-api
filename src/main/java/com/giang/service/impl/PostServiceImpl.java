@@ -91,7 +91,7 @@ public class PostServiceImpl implements PostService {
             location = "%" + location + "%";
         }
         if (Objects.isNull(minPrice)) {
-            minPrice = 100000D;
+            minPrice = 1D;
         }
         if (Objects.isNull(maxPrice)) {
             maxPrice = 100000000D;
