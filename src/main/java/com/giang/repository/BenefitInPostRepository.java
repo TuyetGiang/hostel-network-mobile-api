@@ -2,6 +2,7 @@ package com.giang.repository;
 
 import com.giang.repository.entity.BenefitInPost;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,8 @@ public interface BenefitInPostRepository extends JpaRepository<BenefitInPost, Lo
     BenefitInPost findByBenefitIdAndPostId(Integer benefitId, Integer postId);
 
     BenefitInPost findById(Integer id);
+
+    @Query("DELETE FROM BenefitInPost b WHERE b.postId = ?1")
+    @Modifying
+    void deleteAllByPostId(Integer postId);
 }

@@ -29,19 +29,22 @@ public class PostServiceImpl implements PostService {
 
     private final UserRepository userRepository;
 
-    private final BenefitRepository benefitRepository;
+    private final BenefitInPostRepository benefitInPostRepository;
 
     private final TypeRepository typeRepository;
 
     private final WishListRepository wishListRepository;
 
-    public PostServiceImpl(PostRepository postRepository, PostCustomRepository postCustomRepository, UserRepository userRepository, BenefitRepository benefitRepository, TypeRepository typeRepository, WishListRepository wishListRepository) {
+    private final PictureRepository pictureRepository;
+
+    public PostServiceImpl(PostRepository postRepository, PostCustomRepository postCustomRepository, UserRepository userRepository, BenefitInPostRepository benefitInPostRepository, TypeRepository typeRepository, WishListRepository wishListRepository, PictureRepository pictureRepository) {
         this.postRepository = postRepository;
         this.postCustomRepository = postCustomRepository;
         this.userRepository = userRepository;
-        this.benefitRepository = benefitRepository;
+        this.benefitInPostRepository = benefitInPostRepository;
         this.typeRepository = typeRepository;
         this.wishListRepository = wishListRepository;
+        this.pictureRepository = pictureRepository;
     }
 
     @Override
@@ -152,6 +155,8 @@ public class PostServiceImpl implements PostService {
         Optional.ofNullable(post).orElseThrow(EntityNotFoundException::new);
 
         postRepository.delete(post);
+        pictureRepository.deleteAllByPostId(post.getId());
+        benefitInPostRepository.deleteAllByPostId(post.getId());
         return true;
     }
 
