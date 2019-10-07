@@ -29,12 +29,7 @@ public class PostDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate postDate;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dueDate;
-
     private Boolean status;
-
-    private Boolean isPush;
 
     private String imgLinkPoster;
 
@@ -136,28 +131,12 @@ public class PostDTO implements Serializable {
         this.postDate = postDate;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
-
     public Boolean getStatus() {
         return status;
     }
 
     public void setStatus(Boolean status) {
         this.status = status;
-    }
-
-    public Boolean getPush() {
-        return isPush;
-    }
-
-    public void setPush(Boolean push) {
-        isPush = push;
     }
 
 }

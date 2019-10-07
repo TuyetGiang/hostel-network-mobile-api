@@ -16,10 +16,6 @@ public interface PostService {
 
     List<PostDTO> fillterPost(List<Integer> benefitIds, Integer typeId, String location, Double minPrice, Double maxPrice);
 
-    PostDTO pushPost(Integer id);
-
-    PostDTO repostPost(Integer id, LocalDate dueDate, Boolean isPush);
-
     Boolean deletePost(Integer id);
 
     List<PostDTO> getCreatedPostByUser(Integer userId);

@@ -11,13 +11,13 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Long> {
     Post findById(Integer id);
 
-    @Query("SELECT p FROM Post p WHERE p.id in ?1 AND p.dueDate >= current_date ORDER BY p.isPush DESC, p.postDate desc ")
+    @Query("SELECT p FROM Post p WHERE p.id in ?1 ORDER BY p.postDate desc ")
     List<Post> findByIdIn(List<Integer> ids);
 
-    @Query("SELECT p FROM Post p WHERE p.dueDate >= current_date ORDER BY p.isPush DESC, p.postDate desc ")
+    @Query("SELECT p FROM Post p ORDER BY p.postDate desc ")
     List<Post> findAllPost();
 
-    @Query("SELECT p FROM Post p WHERE p.dueDate >= current_date AND p.userId = ?1 ORDER BY p.isPush DESC, p.postDate desc ")
+    @Query("SELECT p FROM Post p WHERE p.userId = ?1 ORDER BY p.postDate desc ")
     List<Post> findAllPostByUserId(Integer userId);
 
     @Query("SELECT p FROM Post p WHERE p.userId = ?1")

@@ -11,8 +11,8 @@ public class User {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "username")
-    private String username;
+    @Column(name = "phone")
+    private String phone;
 
     @Column(name = "password")
     private String password;
@@ -23,8 +23,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "phone")
-    private String phone;
+//    @Column(name = "phone")
+//    private String phone;
 
     @Column(name = "address")
     private String address;
@@ -32,17 +32,17 @@ public class User {
     @Column(name = "regist_date")
     private LocalDate registDate;
 
-    @Column(name = "is_admin")
-    private Boolean isAdmin;
-
-    @Column(name = "is_blocked")
-    private Boolean isBlocked;
+//    @Column(name = "is_admin")
+//    private Boolean isAdmin;
+//
+//    @Column(name = "is_blocked")
+//    private Boolean isBlocked;
 
     @Column(name = "img_avatar")
     private String imgAvatar;
 
-    @Column(name = "amount")
-    private Double amount;
+//    @Column(name = "amount")
+//    private Double amount;
 
     public Integer getId() {
         return id;
@@ -52,12 +52,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPassword() {
@@ -84,13 +84,13 @@ public class User {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+//    public String getPhone() {
+//        return phone;
+//    }
+//
+//    public void setPhone(String phone) {
+//        this.phone = phone;
+//    }
 
     public String getAddress() {
         return address;
@@ -100,13 +100,13 @@ public class User {
         this.address = address;
     }
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
+//    public Boolean getAdmin() {
+//        return isAdmin;
+//    }
+//
+//    public void setAdmin(Boolean admin) {
+//        isAdmin = admin;
+//    }
 
     public LocalDate getRegistDate() {
         return registDate;
@@ -116,21 +116,21 @@ public class User {
         this.registDate = registDate;
     }
 
-    public Boolean getBlocked() {
-        return isBlocked;
-    }
-
-    public void setBlocked(Boolean blocked) {
-        isBlocked = blocked;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
+//    public Boolean getBlocked() {
+//        return isBlocked;
+//    }
+//
+//    public void setBlocked(Boolean blocked) {
+//        isBlocked = blocked;
+//    }
+//
+//    public void setAmount(Double amount) {
+//        this.amount = amount;
+//    }
+//
+//    public Double getAmount() {
+//        return amount;
+//    }
 
     public String getImgAvatar() {
         return imgAvatar;

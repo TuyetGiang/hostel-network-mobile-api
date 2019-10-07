@@ -9,7 +9,7 @@ public class UserDTO implements Serializable {
 
     private Integer id;
 
-    private String username;
+    private String phone;
 
     private String password;
 
@@ -17,18 +17,10 @@ public class UserDTO implements Serializable {
 
     private String email;
 
-    private String phone;
-
     private String address;
-
-    private Boolean isBlocked;
-
-    private Double amount;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate registDate;
-
-    private Boolean isAdmin;
 
     private String imgAvatar;
 
@@ -38,14 +30,6 @@ public class UserDTO implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
@@ -88,36 +72,12 @@ public class UserDTO implements Serializable {
         this.address = address;
     }
 
-    public Boolean getBlocked() {
-        return isBlocked;
-    }
-
-    public void setBlocked(Boolean blocked) {
-        isBlocked = blocked;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
     public LocalDate getRegistDate() {
         return registDate;
     }
 
     public void setRegistDate(LocalDate registDate) {
         this.registDate = registDate;
-    }
-
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
     }
 
     public String getImgAvatar() {

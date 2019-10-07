@@ -40,14 +40,14 @@ public class Post {
     @Column(name = "post_date")
     private LocalDate postDate;
 
-    @Column(name = "due_date")
-    private LocalDate dueDate;
+//    @Column(name = "due_date")
+//    private LocalDate dueDate;
 
     @Column(name = "status")
     private Boolean status;
 
-    @Column(name = "is_push")
-    private Boolean isPush;
+//    @Column(name = "is_push")
+//    private Boolean isPush;
 
     @Column(name = "img_link_poster")
     private String imgLinkPoster;
@@ -140,13 +140,13 @@ public class Post {
         this.postDate = postDate;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
-    }
-
-    public void setDueDate(LocalDate dueDate) {
-        this.dueDate = dueDate;
-    }
+//    public LocalDate getDueDate() {
+//        return dueDate;
+//    }
+//
+//    public void setDueDate(LocalDate dueDate) {
+//        this.dueDate = dueDate;
+//    }
 
     public Boolean getStatus() {
         return status;
@@ -156,12 +156,12 @@ public class Post {
         this.status = status;
     }
 
-    public Boolean getPush() {
-        return isPush;
-    }
-
-    public void setPush(Boolean push) {
-        isPush = push;
-    }
+//    public Boolean getPush() {
+//        return isPush;
+//    }
+//
+//    public void setPush(Boolean push) {
+//        isPush = push;
+//    }
 
 }

@@ -64,13 +64,6 @@ public class PostServiceImpl implements PostService {
     public PostDTO createNewPost(PostDTO newPost) {
 
         Post post = mapToEntity(newPost);
-
-        if (newPost.getPush()) {
-            updateAmountUser(newPost.getUserId(), pushMoney(post) + postMoney(post));
-        } else {
-            updateAmountUser(newPost.getUserId(), postMoney(post));
-            post.setPush(null);
-        }
         post = postRepository.saveAndFlush(post);
         return mapToDto(post);
     }
@@ -120,36 +113,6 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostDTO pushPost(Integer id) {
-        Post post = postRepository.findById(id);
-        Optional.ofNullable(post).orElseThrow(EntityNotFoundException::new);
-        post.setPush(true);
-        post.setPostDate(LocalDate.now());
-        updateAmountUser(post.getUserId(), pushMoney(post));
-        post = postRepository.saveAndFlush(post);
-        return mapToDto(post);
-    }
-
-    @Override
-    public PostDTO repostPost(Integer id, LocalDate dueDate, Boolean isPush) {
-        Post post = postRepository.findById(id);
-        Optional.ofNullable(post).orElseThrow(EntityNotFoundException::new);
-
-        post.setPostDate(LocalDate.now());
-        post.setDueDate(dueDate);
-
-        if (Objects.nonNull(isPush) && isPush) {
-            updateAmountUser(post.getUserId(), pushMoney(post) + postMoney(post));
-            post.setPush(true);
-        } else {
-            updateAmountUser(post.getUserId(), postMoney(post));
-            post.setPush(null);
-        }
-        post = postRepository.saveAndFlush(post);
-        return mapToDto(post);
-    }
-
-    @Override
     public Boolean deletePost(Integer id) {
         Post post = postRepository.findById(id);
         Optional.ofNullable(post).orElseThrow(EntityNotFoundException::new);
@@ -186,22 +149,6 @@ public class PostServiceImpl implements PostService {
     private Post mapToEntity(PostDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(dto, Post.class);
-    }
-
-    private Double pushMoney(Post post) {
-        return DAYS.between(LocalDate.now(), post.getDueDate()) * 1500D;
-
-    }
-
-    private Double postMoney(Post post) {
-        return DAYS.between(post.getPostDate(), post.getDueDate()) * 1000D;
-
-    }
-
-    private void updateAmountUser(Integer userId, Double amount) {
-        User user = userRepository.findById(userId);
-        user.setAmount(Optional.ofNullable(user.getAmount()).orElse(0D) - amount);
-        userRepository.saveAndFlush(user);
     }
 
 }

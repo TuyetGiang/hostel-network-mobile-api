@@ -37,16 +37,7 @@ public class PostController implements PostApi {
 
     @Override
     public ResponseEntity<PostDTO> updatePost(@PathVariable("id")Integer id,
-                                              @RequestParam(value = "pushed", required = false)Boolean pushed,
-                                              @RequestParam(value = "reposted", required = false)Boolean reposted,
                                               @RequestBody(required = false) PostDTO dto) {
-        if (Objects.nonNull(pushed) && pushed){
-            return ResponseEntity.ok(postService.pushPost(id));
-        }
-        if (Objects.nonNull(reposted) && reposted){
-            return ResponseEntity.ok(postService.repostPost(id, dto.getDueDate(), dto.getPush()));
-
-        }
         return ResponseEntity.ok(postService.updatePost(dto));
     }
 
@@ -61,18 +52,6 @@ public class PostController implements PostApi {
         }
         return ResponseEntity.ok(postService.fillterPost(benefitIds, typeId, location, minPrice, maxPrice));
     }
-
-//    @Override
-//    public ResponseEntity<PostDTO> pushPost(@PathVariable("id") Integer id) {
-//        return ResponseEntity.ok(postService.pushPost(id));
-//    }
-//
-//    @Override
-//    public ResponseEntity<PostDTO> repostPost(@PathVariable("id") Integer id,
-//                                              @RequestParam Integer numberDay,
-//                                              @RequestParam Boolean isPush) {
-//        return ResponseEntity.ok(postService.repostPost(id, numberDay, isPush));
-//    }
 
     @Override
     public ResponseEntity<Boolean> deletePost(@PathVariable("id") Integer id) {

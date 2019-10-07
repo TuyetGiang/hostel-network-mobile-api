@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO findByUsernameAndPassword(String username, String password) {
-        User user = userRepository.findByUsernameAndPassword(username, password);
+        User user = userRepository.findByPhoneAndPassword(username, password);
         Optional.ofNullable(user).orElseThrow(EntityNotFoundException::new);
         return this.mapToDto(user);
     }
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO createNewUser(UserDTO newUser) {
-        User user = userRepository.findByUsername(newUser.getUsername());
+        User user = userRepository.findByPhone(newUser.getPhone());
         if (Objects.nonNull(user)){
             throw new EntityExistsException("This username is existed! ");
         }
