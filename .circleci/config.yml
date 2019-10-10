@@ -1,115 +1,90 @@
 version: 2
 jobs:
-  build_production:
-    working_directory: /app
-    docker:
-      - image: openjdk:8-stretch
-    steps:
-      - checkout
-      - run:
-          name: Replace application properties with the one for Docker
-          command: |
-            rm src/main/resources/application.properties
-            mv src/main/resources/application_docker.properties src/main/resources/application.properties
-      - run:
-          name: Build gradle
-          command: |
-            chmod +x gradlew
-            ./gradlew clean build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - ./*
-  dockerize_production:
+  build_and_push_registry:
     working_directory: /app
     docker:
       - image: docker:latest
     steps:
+      - checkout
       - setup_remote_docker
-      - attach_workspace:
-          at: /app
+      - run:
+          name: Generate build version (based on current datetime)
+          command: |
+            echo $(date -u +%Y%m%d%H%M%S) > build_version
       - run:
           name: Build container
           command: |
-            docker build -f Dockerfile -t hostel-network-mobile-api:latest .
+            docker build -t blackheat/hostel-network-mobile-api:$(cat build_version) .
       - run:
-          name: Save image layer cache
+          name: Login to Dockerhub
           command: |
-            docker save -o hostel_network_mobile_api.tar hostel-network-mobile-api:latest
+            docker login --username=$DOCKERHUB_USERNAME --password=$DOCKERHUB_PASSWORD
+       - run:
+          working_directory: workspace
+          name: Push container to Dockerhub registry
+          command: |
+            docker push blackheat/hostel-network-mobile-api:$(cat build_version)
       - run:
-          name: Save image to shared workspace and as artifact
+          name: Create workspace directory
           command: |
             mkdir workspace
-            mkdir artifacts
-            cp hostel_network_mobile_api.tar workspace/
-            cp hostel_network_mobile_api.tar artifacts/
+      - run:
+          name: Save build version to workspace
+          command: |
+            cp build_version workspace/
       - persist_to_workspace:
           root: workspace
           paths:
-            - hostel_network_mobile_api.tar
-      - store_artifacts:
-          path: /app/artifacts
-  deploy_production:
+            - build_version
+  deploy:
     working_directory: /app
     docker:
       - image: debian:latest
     steps:
-      - add_ssh_keys
       - run:
-          name: Install OpenSSH, OpenSSL
+          name: Install necessary dependencies
           command: |
             apt-get update
-            apt-get install -y openssh-client openssl ca-certificates
+            apt-get install -y openssh-client openssl ca-certificates lsb-release curl gnupg
       - attach_workspace:
           at: /app/workspace
       - run:
-          name: Getting SSH fingerprint from server
+          name: Install GCloud SDK and kubectl
           command: |
-            ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
+            # Create environment variable for correct distribution
+            export CLOUD_SDK_REPO="cloud-sdk-$(lsb_release -c -s)"
+            # Add the Cloud SDK distribution URI as a package source
+            echo "deb http://packages.cloud.google.com/apt $CLOUD_SDK_REPO main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+            # Import the Google Cloud Platform public key
+            curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+            # Update the package list and install the Cloud SDK
+            apt-get update -y && apt-get install -y google-cloud-sdk kubectl    
+      - run:
+          name: Initialize & Authenticate GCloud SDK
+          command: |
+            echo "${GCP_KEY_FILE}" | base64 --decode >> /tmp/gcp_key.json
+            gcloud auth activate-service-account --key-file /tmp/gcp_key.json
+            gcloud config set project ${GCP_PROJECT_ID}
+      - run:
+          name: Get GKE credentials for Kubectl
+          command: |
+            gcloud container clusters get-credentials ${GKE_CLUSTER_NAME} --region=us-central1-a
       - run:
           working_directory: workspace
-          name: Push image to server
+          name: Perform rolling update in Kubernetes
           command: |
-            ssh $SSH_USER@$SERVER_IP 'mkdir -p ~/docker-images'
-            scp hostel_network_mobile_api.tar $SSH_USER@$SERVER_IP:~/docker-images
-      - run:
-          name: Delete old image(s) in server
-          command: |
-            ssh $SSH_USER@$SERVER_IP 'docker rmi hostel-network-mobile-api || true'
-      - run:
-          name: Import new image in server
-          command: |
-            ssh $SSH_USER@$SERVER_IP 'docker load --input ~/docker-images/hostel_network_mobile_api.tar'
-      - run:
-          name: Stop and remove old container
-          command: |
-            ssh $SSH_USER@$SERVER_IP 'docker stop hostel-network-mobile-api || true'
-            ssh $SSH_USER@$SERVER_IP 'docker rm hostel-network-mobile-api || true'
-      - run:
-          name: Create and start container
-          command: |
-            ssh $SSH_USER@$SERVER_IP 'docker run -p 2006:8080 --name hostel-network-mobile-api -d hostel-network-mobile-api:latest'
-      - run:
-          name: Delete container tar image
-          command: |
-            ssh $SSH_USER@$SERVER_IP 'rm -rf ~/docker-images/hostel_network_mobile_api.tar'
+            kubectl -n ${KUBE_NAMESPACE} set image deployments/hostel-network-mobile-api hostel-network-mobile-api=blackheat/hostel-network-mobile-api:$(cat build_version)
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build_production:
+      - build_and_push_registry:
           filters:
             branches:
               only: master
-      - dockerize_production:
+      - deploy:
           requires:
-            - build_production
-          filters:
-            branches:
-              only: master
-      - deploy_production:
-          requires:
-            - dockerize_production
+            - build_and_push_registry
           filters:
             branches:
               only: master
